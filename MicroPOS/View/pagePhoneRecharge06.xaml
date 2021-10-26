@@ -1,0 +1,236 @@
+<Page
+	x:Class="MicroPOS.View.pagePhoneRecharge06" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:MicroPOS.View"
+	Height="689"
+	Width="1692"
+	Title="pagePhoneRecharge03"
+	DataContext="{Binding Source={StaticResource Locator}, Path=PageRecharge}">
+    <Grid
+		Background="{Binding mPageBackColor}">
+        <Grid.RowDefinitions>
+            <RowDefinition
+				Height="69*" />
+            <RowDefinition
+				Height="Auto" />
+            <RowDefinition
+				Height="76*" />
+            <RowDefinition
+				Height="69*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+				Width="Auto" />
+            <ColumnDefinition
+				Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Image
+			Grid.Column="0"
+			Grid.Row="1"
+			Grid.RowSpan="2"
+			Margin="30"
+			Source="/MicroPOS;component/Images/page_phone_recharge.png"
+			Visibility="Hidden" />
+        <TextBlock
+			Name="_txtPageSubject"
+			Text="Por favor, digite seu número de telefone."
+			Grid.Column="1"
+			Grid.Row="0"
+			FontSize="36"
+			FontWeight="Bold"
+			VerticalAlignment="Bottom"
+			Foreground="{Binding mPageTitleColor}">
+			<UIElement.Effect>
+				<DropShadowEffect
+					ShadowDepth="1"
+					Direction="330"
+					Color="Black"
+					Opacity="0.3"
+					BlurRadius="4" />
+			</UIElement.Effect>
+        </TextBlock>
+        <Grid
+			Name="_gridConfirms"
+			Column="0"
+			Row="1"
+			ColumnSpan="1"
+			Margin="80, 20"
+			Background="#00FFFFFF"
+			Tag="{Binding RcgInfo}">
+            <Grid.RowDefinitions>
+                <RowDefinition
+					Height="10*" />
+                <RowDefinition
+					Height="10*" />
+                <RowDefinition
+					Height="10*" />
+                <RowDefinition
+					Height="10*" />
+                <RowDefinition
+					Height="10*" />
+                <RowDefinition
+					Height="10*" />
+                <RowDefinition
+					Height="10*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+					Width="40*" />
+                <ColumnDefinition
+					Width="60*" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+				Text="Confirme as informações antes de iniciar o pagamento"
+				Grid.Column="0"
+				Grid.Row="0"
+				Grid.ColumnSpan="2"
+				Foreground="#2B2D42"
+				FontSize="30"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center">
+				<UIElement.Effect>
+					<DropShadowEffect
+						ShadowDepth="1"
+						Direction="330"
+						Color="Black"
+						Opacity="0.3"
+						BlurRadius="4" />
+				</UIElement.Effect>
+            </TextBlock>
+            <TextBlock
+				Name="_infoPhoneNumb"
+				Text="Número de telefone"
+				Grid.Column="0"
+				Grid.Row="1"
+				FontSize="30"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Right"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_infoMobileOpt"
+				Text="Operadora"
+				Grid.Column="0"
+				Grid.Row="2"
+				FontSize="30"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Right"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_infoPayAmount"
+				Text="Valor"
+				Grid.Column="0"
+				Grid.Row="3"
+				FontSize="30"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Right"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_infoTransfFee"
+				Text="Nossa Tarifa"
+				Grid.Column="0"
+				Grid.Row="4"
+				FontSize="30"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Right"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_infoAllAmount"
+				Text="Total a pagar"
+				Grid.Column="0"
+				Grid.Row="5"
+				FontSize="30"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Right"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_infoPayMethod"
+				Text="Método de Pagamento"
+				Grid.Column="0"
+				Grid.Row="6"
+				FontSize="30"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Right"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_valPhoneNumb"
+				Grid.Column="1"
+				Grid.Row="1"
+				FontSize="30"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_valMobileOpt"
+				Grid.Column="1"
+				Grid.Row="2"
+				FontSize="30"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_valPayAmount"
+				Grid.Column="1"
+				Grid.Row="3"
+				FontSize="30"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_valTransfFee"
+				Grid.Column="1"
+				Grid.Row="4"
+				FontSize="30"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_valAllAmount"
+				Grid.Column="1"
+				Grid.Row="5"
+				FontSize="30"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_valPayMethod"
+				Grid.Column="1"
+				Grid.Row="6"
+				FontSize="30"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				Foreground="{Binding mTextForeColor}" />
+        </Grid>
+        <StackPanel
+			Name="_buttonPanel"
+			Grid.Column="0"
+			Grid.Row="2"
+            Grid.ColumnSpan="2"
+			Orientation="Horizontal"
+			HorizontalAlignment="Right">
+            <Button
+				Name="_btnBack"
+				Content="Voltar"
+				Height="66"
+				Width="260"
+				Margin="10,0"
+				FontSize="36"
+				Click="_btnBack_Click" />
+            <Button
+				Name="_btnCancel"
+				Content="Cancelar"
+				IsEnabled="False"
+				Height="66"
+				Width="260"
+				Margin="10,0"
+				FontSize="36"
+				Click="_btnCancel_Click" />
+            <Button
+				Name="_btnContinue"
+				Content="Continuar"
+				Height="66"
+				Width="260"
+				Margin="10,0"
+				FontSize="36"
+				Click="_btnContinue_Click" />
+        </StackPanel>
+    </Grid>
+</Page>

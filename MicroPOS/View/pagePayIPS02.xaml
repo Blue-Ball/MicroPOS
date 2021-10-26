@@ -1,0 +1,349 @@
+<Page
+	x:Class="MicroPOS.View.pagePayIPS02" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:MicroPOS.View" xmlns:lc_data="clr-namespace:MicroPOS.RestAPI"
+	Height="689"
+	Width="1692"
+	Title="pagePhoneRecharge03"
+	DataContext="{Binding Source={StaticResource Locator}, Path=PageIps}">
+    <FrameworkElement.Resources>
+        <ResourceDictionary>
+            <LinearGradientBrush
+				EndPoint="0.5,1"
+				StartPoint="0.5,0"
+				x:Key="BlueRinseBrush">
+                <GradientStop
+					Color="#FF223B84"
+					Offset="1" />
+                <GradientStop
+					Color="#FF57A0F4"
+					Offset="0.5" />
+                <GradientStop
+					Color="#FF4B94EC"
+					Offset="0.5" />
+            </LinearGradientBrush>
+            <Style
+				TargetType="{x:Type Thumb}"
+				x:Key="GridViewColumnHeaderGripper">
+                <Setter
+					Property="Width"
+					Value="18" />
+                <Setter
+					Property="Background"
+					Value="#FFFFFFFF" />
+                <Setter
+					Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate
+							TargetType="{x:Type Thumb}">
+                            <Border
+								Padding="{TemplateBinding Padding}"
+								Background="#00FFFFFF">
+                                <Rectangle
+									HorizontalAlignment="Center"
+									Width="3"
+									Fill="{TemplateBinding Background}" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style
+				TargetType="{x:Type GridViewColumnHeader}"
+				x:Key="GridViewColumnHeaderStyle">
+                <Setter
+					Property="HorizontalContentAlignment"
+					Value="Center" />
+                <Setter
+					Property="VerticalContentAlignment"
+					Value="Center" />
+                <Setter
+					Property="Background"
+					Value="{StaticResource BlueRinseBrush}" />
+                <Setter
+					Property="Foreground"
+					Value="{DynamicResource SystemColors.ControlTextBrushKey}" />
+                <Setter
+					Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate
+							TargetType="{x:Type GridViewColumnHeader}">
+                            <Grid>
+                                <Border
+									Name="HeaderBorder"
+									BorderThickness="0"
+									Padding="2,0,2,0"
+									BorderBrush="{StaticResource BlueRinseBrush}"
+									Background="{StaticResource BlueRinseBrush}">
+                                    <ContentPresenter
+										Name="HeaderContent"
+										TextElement.Foreground="#FFFFFFFF"
+										Margin="0,0,0,1"
+										VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+										HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+										RecognizesAccessKey="True"
+										SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+                                </Border>
+                                <Thumb
+									Name="PART_HeaderGripper"
+									HorizontalAlignment="Right"
+									Margin="0,0,-9,0"
+									Style="{StaticResource GridViewColumnHeaderGripper}" />
+                            </Grid>
+                            <ControlTemplate.Triggers>
+                                <Trigger
+									Property="UIElement.IsMouseOver"
+									Value="True">
+                                    <Setter
+										TargetName="HeaderBorder"
+										Property="Background"
+										Value="#FFFFFF00" />
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </FrameworkElement.Resources>
+    <Grid
+		Name="_mainGrid"
+		Background="{Binding mPageBackColor}"
+		Tag="{Binding IpsData}">
+        <FrameworkElement.Resources>
+            <ResourceDictionary />
+        </FrameworkElement.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition
+				Height="Auto" />
+            <RowDefinition
+				Height="Auto" />
+            <RowDefinition
+				Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+				Width="Auto" />
+            <ColumnDefinition
+				Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Image
+			Grid.Column="0"
+			Grid.Row="1"
+			Margin="30"
+			Source="/MicroPOS;component/Images/page_pay_ips.png"
+			Visibility="Hidden">
+            <UIElement.Effect>
+                <DropShadowEffect
+					Direction="300"
+					Color="DarkRed"
+					ShadowDepth="10"
+					BlurRadius="14" />
+            </UIElement.Effect>
+        </Image>
+        <TextBlock
+			Name="_txtPageSubject"
+			Text="Insira seu número de CPF."
+			Grid.Column="1"
+			Grid.Row="0"
+			Visibility="Hidden"
+			FontSize="36"
+			FontWeight="Bold"
+			VerticalAlignment="Bottom"
+			Foreground="{Binding mPageTitleColor}">
+			<UIElement.Effect>
+				<DropShadowEffect
+					ShadowDepth="1"
+					Direction="330"
+					Color="Black"
+					Opacity="0.3"
+					BlurRadius="4" />
+			</UIElement.Effect>
+        </TextBlock>
+        <Grid
+			Name="_gridConfirms"
+			Column="0"
+			Row="1"
+			ColumnSpan="1"
+			Margin="0,10"
+			Background="#00FFFFFF">
+            <Grid.RowDefinitions>
+                <RowDefinition
+					Height="60" />
+                <RowDefinition
+					Height="50" />
+                <RowDefinition
+					Height="50" />
+                <RowDefinition
+					Height="Auto" />
+                <RowDefinition
+					Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition
+					Width="Auto" />
+                <ColumnDefinition
+					Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+				Text="Escolha as faturas que deseja pagar"
+				Grid.Column="0"
+				Grid.Row="0"
+				Grid.ColumnSpan="2"
+				Foreground="#2B2D42"
+				FontSize="30"
+				FontWeight="Bold"
+				VerticalAlignment="Top"
+				HorizontalAlignment="Center"
+                >
+				<UIElement.Effect>
+					<DropShadowEffect
+						ShadowDepth="1"
+						Direction="330"
+						Color="Black"
+						Opacity="0.3"
+						BlurRadius="4" />
+				</UIElement.Effect>
+            </TextBlock>
+            <TextBlock
+				Name="_infoName"
+				Text="Nome"
+				Grid.Column="0"
+				Grid.Row="1"
+				FontSize="24"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Right"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_infoCPF"
+				Text="CPF"
+				Grid.Column="0"
+				Grid.Row="2"
+				FontSize="24"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Right"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_valName"
+				Grid.Column="1"
+				Grid.Row="1"
+				FontSize="24"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_valCPF"
+				Grid.Column="1"
+				Grid.Row="2"
+				FontSize="24"
+				VerticalAlignment="Center"
+				HorizontalAlignment="Center"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_infoInvoice"
+				Text="Lista de faturas"
+				Grid.Column="0"
+				Grid.Row="3"
+				FontSize="24"
+				VerticalAlignment="Top"
+				HorizontalAlignment="Right"
+				Foreground="{Binding mTextForeColor}" />
+            <ListView
+				Name="_invoiceList"
+				ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+				SelectionMode="Multiple"
+				Grid.Column="1"
+				Grid.Row="3"
+				FontSize="30"
+				Margin="75, 5"
+				Grid.ColumnSpan="2"
+				SelectionChanged="_invoiceList_SelectionChanged">
+                <ItemsControl.ItemContainerStyle>
+                    <Style
+						TargetType="{x:Type ListViewItem}">
+                        <Setter
+							Property="HorizontalContentAlignment"
+							Value="Center" />
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ListView.View>
+                    <GridView
+						ColumnHeaderContainerStyle="{StaticResource GridViewColumnHeaderStyle}">
+                        <GridViewColumn
+							Header="Fatura"
+							Width="200">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <!--未知连接 ID：10-->
+                                    <CheckBox
+										Cursor="Hand"
+										Height="24"
+										IsChecked="{Binding select}" Checked="Invoice_Checked" Unchecked="Invoice_Unchecked">
+                                        <FrameworkElement.LayoutTransform>
+                                            <ScaleTransform
+												ScaleX="2"
+												ScaleY="2" />
+                                        </FrameworkElement.LayoutTransform>
+                                        <TextBlock
+											Margin="0,-2,0,0"
+											FontSize="15"
+											Text="{Binding id_fatura}" />
+                                    </CheckBox>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn
+							Header="Vencimento"
+							Width="280"
+							DisplayMemberBinding="{Binding DecoDate}" />
+                        <GridViewColumn
+							Header="Valor"
+							Width="288"
+							DisplayMemberBinding="{Binding DecoValue}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <TextBlock
+				Name="_infoTotalAmount"
+				Text="Valor Total"
+				Grid.Column="0"
+				Grid.Row="4"
+				FontSize="24"
+				HorizontalAlignment="Right"
+				Foreground="{Binding mTextForeColor}" />
+            <TextBlock
+				Name="_valTotalAmount"
+				Grid.Column="0"
+				Grid.Row="4"
+                Grid.ColumnSpan="2"
+				FontSize="24"
+				HorizontalAlignment="Right"
+				Foreground="{Binding mTextForeColor}" />
+        </Grid>
+        <StackPanel
+			Name="_buttonPanel"
+			Grid.Column="0"
+			Grid.Row="2"
+			Orientation="Horizontal"
+            Margin="0,0,150,0"
+			HorizontalAlignment="Right">
+            <Button
+				Name="_btnNo"
+				Content="Voltar"
+				Height="66"
+				Width="260"
+				Margin="10,0"
+				FontSize="36"
+				Click="_btnNo_Click" />
+            <Button
+				Name="_btnYes"
+				Content="Próximo"
+				Height="66"
+				Width="260"
+				Margin="10,0"
+				FontSize="36"
+				Click="_btnYes_Click" />
+        </StackPanel>
+    </Grid>
+</Page>

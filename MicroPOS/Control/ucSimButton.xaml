@@ -1,0 +1,120 @@
+<UserControl
+	x:Class="MicroPOS.Control.ucSimButton" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:MicroPOS"
+	Width="450"
+	Height="200"
+	Opacity="1" xmlns:control="clr-namespace:MicroPOS.Control">
+	<FrameworkElement.Resources>
+		<ResourceDictionary>
+			<Storyboard
+				x:Key="OnMouseEnter1">
+				<DoubleAnimationUsingKeyFrames
+					BeginTime="00:00:00"
+					Storyboard.TargetName="_tileSurfaceRect"
+					Storyboard.TargetProperty="(UIElement.Opacity)">
+					<SplineDoubleKeyFrame
+						KeyTime="00:00:00"
+						Value="0" />
+					<SplineDoubleKeyFrame
+						KeyTime="00:00:00.3000000"
+						Value="0.14" />
+				</DoubleAnimationUsingKeyFrames>
+			</Storyboard>
+			<Storyboard
+				x:Key="OnMouseLeave1">
+				<DoubleAnimationUsingKeyFrames
+					BeginTime="00:00:00"
+					Storyboard.TargetName="_tileSurfaceRect"
+					Storyboard.TargetProperty="(UIElement.Opacity)">
+					<SplineDoubleKeyFrame
+						KeyTime="00:00:00"
+						Value="0.14" />
+					<SplineDoubleKeyFrame
+						KeyTime="00:00:00.3000000"
+						Value="0" />
+				</DoubleAnimationUsingKeyFrames>
+			</Storyboard>
+		</ResourceDictionary>
+	</FrameworkElement.Resources>
+	<FrameworkElement.Triggers>
+		<EventTrigger
+			RoutedEvent="Mouse.MouseEnter">
+			<BeginStoryboard
+				Storyboard="{StaticResource OnMouseEnter1}" />
+		</EventTrigger>
+		<EventTrigger
+			RoutedEvent="Mouse.MouseLeave">
+			<BeginStoryboard
+				Name="OnMouseLeave1_BeginStoryboard"
+				Storyboard="{StaticResource OnMouseLeave1}" />
+		</EventTrigger>
+	</FrameworkElement.Triggers>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition
+				Width="10" />
+			<ColumnDefinition
+				Width="90*" />
+			<ColumnDefinition
+				Width="10" />
+			<ColumnDefinition
+				Width="100*" />
+			<ColumnDefinition
+				Width="10" />
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="10" />
+			<RowDefinition
+				Height="*" />
+			<RowDefinition
+				Height="10" />
+		</Grid.RowDefinitions>
+		<Border
+			Name="_tileBorder"
+			CornerRadius="10,10,10,10"
+			Background="#FFBBD2ED"
+			Grid.RowSpan="3"
+			Grid.ColumnSpan="5">
+			<UIElement.Effect>
+				<DropShadowEffect
+					ShadowDepth="5"
+					Direction="320"
+					Color="DarkGray"
+					Opacity="0.3"
+					BlurRadius="5" />
+			</UIElement.Effect>
+		</Border>
+		<Image
+			Name="_tileIcon"
+			Grid.Column="1"
+			Grid.Row="1"
+			Source="../Images/ico_sim_claro.png" />
+		<TextBlock
+			Name="_tileText"
+			Grid.Column="3"
+			Grid.Row="1"
+			FontSize="64"
+			Foreground="#FF3D5A80"
+			Text="Claro"
+			TextWrapping="Wrap"
+			FontFamily="Bebas Neue"
+			VerticalAlignment="Center"
+			Margin="20,0">
+			<UIElement.Effect>
+				<DropShadowEffect
+					ShadowDepth="3"
+					Direction="330"
+					Color="Black"
+					Opacity="0.3"
+					BlurRadius="4" />
+			</UIElement.Effect>
+		</TextBlock>
+		<Rectangle
+			Name="_tileSurfaceRect"
+			Fill="#FF000000"
+			Opacity="0"
+			Stroke="#FFFBFBFB"
+			Grid.RowSpan="3"
+			Grid.ColumnSpan="5" />
+	</Grid>
+</UserControl>

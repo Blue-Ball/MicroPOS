@@ -1,0 +1,120 @@
+<Page
+	x:Class="MicroPOS.View.pageBilling02" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:MicroPOS.View"
+	Height="689"
+	Width="1692"
+	Title="pageBilling02"
+	DataContext="{Binding Source={StaticResource Locator}, Path=PageBilling}">
+	<Grid
+		Name="_mainGrid"
+		Background="{Binding mPageBackColor}"
+		Tag="{Binding BillInfo}">
+		<Grid.RowDefinitions>
+			<RowDefinition
+				Height="69*" />
+			<RowDefinition
+				Height="475*" />
+			<RowDefinition
+				Height="76*" />
+			<RowDefinition
+				Height="69*" />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition
+				Width="580*" />
+			<ColumnDefinition
+				Width="1045*" />
+			<ColumnDefinition
+				Width="67*" />
+		</Grid.ColumnDefinitions>
+		<Image
+			Grid.Column="0"
+			Grid.Row="1"
+			Grid.RowSpan="2"
+			Margin="30"
+			Source="/MicroPOS;component/Images/page_billing_subject.png"
+			Visibility="Hidden" />
+		<TextBlock
+			Name="_txtPageSubject"
+			Text="Escolha o cartão presente."
+			Grid.Column="1"
+			Grid.Row="0"
+			FontSize="36"
+			FontWeight="Bold"
+			VerticalAlignment="Bottom"
+			Foreground="{Binding mPageTitleColor}">
+			<UIElement.Effect>
+				<DropShadowEffect
+					ShadowDepth="1"
+					Direction="330"
+					Color="Black"
+					Opacity="0.3"
+					BlurRadius="4" />
+			</UIElement.Effect>
+		</TextBlock>
+		<Canvas
+			HorizontalAlignment="Left"
+			Height="689"
+			VerticalAlignment="Top"
+			Width="1692"
+			Grid.ColumnSpan="2">
+			<TextBlock
+				Height="45"
+				Canvas.Left="424"
+				TextWrapping="Wrap"
+				Text="Recebedor"
+				Canvas.Top="170"
+				Width="239"
+				FontSize="36"
+				Foreground="{Binding mTextForeColor}" />
+			<TextBlock
+				Height="45"
+				Canvas.Left="424"
+				TextWrapping="Wrap"
+				Text="VALOR"
+				Canvas.Top="246"
+				Width="239"
+				FontSize="42"
+				FontWeight="Bold"
+				Foreground="{Binding mTextForeColor}" />
+			<TextBlock
+				Name="_txtReciever"
+				Height="45"
+				Canvas.Left="685"
+				TextWrapping="Wrap"
+				Text="RecieverName"
+				Canvas.Top="170"
+				Width="628"
+				FontSize="36"
+				Foreground="{Binding mTextForeColor}" />
+			<TextBlock
+				Name="_txtAmount"
+				Height="45"
+				Canvas.Left="685"
+				TextWrapping="Wrap"
+				Text="R$----"
+				Canvas.Top="246"
+				Width="628"
+				FontSize="42"
+				FontWeight="Bold"
+				Foreground="{Binding mTextForeColor}" />
+			<Button
+				Name="_btnNo"
+				Content="Não"
+				Height="66"
+				Canvas.Left="742"
+				Canvas.Top="421"
+				Width="260"
+				FontSize="36"
+				Click="_btnNo_Click" />
+			<Button
+				Name="_btnYes"
+				Content="Sim"
+				Height="66"
+				Canvas.Left="1052"
+				Canvas.Top="421"
+				Width="260"
+				FontSize="36"
+				Click="_btnYes_Click" />
+		</Canvas>
+	</Grid>
+</Page>

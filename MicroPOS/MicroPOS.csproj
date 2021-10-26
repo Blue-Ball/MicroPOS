@@ -1,0 +1,494 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{BEE74CDB-7863-44F7-8A35-85ED325D1DED}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MicroPOS</RootNamespace>
+    <AssemblyName>MicroPOS</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60DC8134-EBA5-43B8-BCC9-BB4BC16C2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>MicroPOS.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BespokeFusion">
+      <HintPath>..\Lib\BespokeFusion.dll</HintPath>
+    </Reference>
+    <Reference Include="Cappta.Gp.Api.Com">
+      <HintPath>..\Lib\Cappta.Gp.Api.Com.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator">
+      <HintPath>..\Lib\CommonServiceLocator.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\Lib\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras">
+      <HintPath>..\Lib\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform">
+      <HintPath>..\Lib\GalaSoft.MvvmLight.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="MaterialDesignThemes.Wpf">
+      <HintPath>..\Lib\MaterialDesignThemes.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\Lib\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\Lib\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\Lib\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xaml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="mscorlib" />
+    <Reference Include="WindowsInput, Version=1.0.4.0, Culture=neutral, PublicKeyToken=9b287f7dc5073cad, processorArchitecture=MSIL">
+      <HintPath>..\packages\InputSimulator.1.0.4.0\lib\net20\WindowsInput.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AlertType.cs" />
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\DMessageBoxButtons.cs" />
+    <Compile Include="Control\TextBoxInputMaskBehavior.cs" />
+    <Compile Include="Control\ucDMessageBox.xaml.cs">
+      <DependentUpon>ucDMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucGiftCard.xaml.cs">
+      <DependentUpon>ucGiftCard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucInputMsgBox.xaml.cs">
+      <DependentUpon>ucInputMsgBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucPriceButton.xaml.cs">
+      <DependentUpon>ucPriceButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucProcessBox.xaml.cs">
+      <DependentUpon>ucProcessBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucSimButton.xaml.cs">
+      <DependentUpon>ucSimButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\ucTileButton.xaml.cs">
+      <DependentUpon>ucTileButton.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Control\vruleNotEmpty.cs" />
+    <Compile Include="Costura\AssemblyLoader.cs" />
+    <Compile Include="Helper\IdleTimeFinder.cs" />
+    <Compile Include="Helper\InterceptKeys.cs" />
+    <Compile Include="Helper\KBDLLHOOKSTRUCT.cs" />
+    <Compile Include="Helper\LASTINPUTINFO.cs" />
+    <Compile Include="Helper\PosHelper.cs" />
+    <Compile Include="Helper\Receipt.cs" />
+    <Compile Include="Helper\ReceiptItem.cs" />
+    <Compile Include="Helper\subs.cs" />
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\BillingInfo.cs" />
+    <Compile Include="Model\boleto.cs" />
+    <Compile Include="Model\confirmBoleto.cs" />
+    <Compile Include="Model\GiftCardInfo.cs" />
+    <Compile Include="Model\InvoiceInfo.cs" />
+    <Compile Include="Model\IpsInfo.cs" />
+    <Compile Include="Model\MessageBoxInfo.cs" />
+    <Compile Include="Model\Payment.cs" />
+    <Compile Include="Model\RechargeInfo.cs" />
+    <Compile Include="Model\ShareMachineInfo.cs" />
+    <Compile Include="Model\tarifa.cs" />
+    <Compile Include="PinpadSDK\clsCapptaClient.cs" />
+    <Compile Include="PinpadSDK\InstallmentType.cs" />
+    <Compile Include="PinpadSDK\PinpadType.cs" />
+    <Compile Include="PinpadSDK\ReimpressaoType.cs" />
+    <Compile Include="Popup\KMessageBox.xaml.cs">
+      <DependentUpon>KMessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Popup\KMessageBoxButtons.cs" />
+    <Compile Include="ProcessedByFody.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="rcMessages.cs" />
+    <Compile Include="RestAPI\clsRestAPI.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RestAPI\RTAccount.cs" />
+    <Compile Include="RestAPI\RTFatura.cs" />
+    <Compile Include="RestAPI\RTFee.cs" />
+    <Compile Include="RestAPI\RTGiftRecharge.cs" />
+    <Compile Include="RestAPI\RTIpsInvoice.cs" />
+    <Compile Include="RestAPI\RTLogin.cs" />
+    <Compile Include="RestAPI\RTMobileRecharge.cs" />
+    <Compile Include="RestAPI\RTNetworkArray.cs" />
+    <Compile Include="RestAPI\RTPaidFatura.cs" />
+    <Compile Include="RestAPI\RTRechargeResponse.cs" />
+    <Compile Include="solucaoTemp.cs" />
+    <Compile Include="TaskManagerForm.cs" />
+    <Compile Include="ViewModel\EventArgs.cs" />
+    <Compile Include="ViewModel\EventRaiser.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\NotifyPropertyChangedExtension.cs" />
+    <Compile Include="ViewModel\PageBillingViewModel.cs" />
+    <Compile Include="ViewModel\PageBoletoViewModel.cs" />
+    <Compile Include="ViewModel\PageGiftViewModel.cs" />
+    <Compile Include="ViewModel\PageIpsViewModel.cs" />
+    <Compile Include="ViewModel\PageRechargeViewModel.cs" />
+    <Compile Include="ViewModel\PageShareViewModel.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\viewmodelInputMsgBox.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="View\NumPad.xaml.cs">
+      <DependentUpon>NumPad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageBilling01.xaml.cs">
+      <DependentUpon>pageBilling01.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageBilling02.xaml.cs">
+      <DependentUpon>pageBilling02.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageBilling03.xaml.cs">
+      <DependentUpon>pageBilling03.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageBilling04.xaml.cs">
+      <DependentUpon>pageBilling04.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageBilling05.xaml.cs">
+      <DependentUpon>pageBilling05.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageBoleto01.xaml.cs">
+      <DependentUpon>pageBoleto01.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageBoleto02.xaml.cs">
+      <DependentUpon>pageBoleto02.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageBuyGiftCard01.xaml.cs">
+      <DependentUpon>pageBuyGiftCard01.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageBuyGiftCard02.xaml.cs">
+      <DependentUpon>pageBuyGiftCard02.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageBuyGiftCard03.xaml.cs">
+      <DependentUpon>pageBuyGiftCard03.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageBuyGiftCard04.xaml.cs">
+      <DependentUpon>pageBuyGiftCard04.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pagecartao.xaml.cs">
+      <DependentUpon>pagecartao.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pagePayIPS00.xaml.cs">
+      <DependentUpon>pagePayIPS00.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pagePayIPS01.xaml.cs">
+      <DependentUpon>pagePayIPS01.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pagePayIPS02.xaml.cs">
+      <DependentUpon>pagePayIPS02.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pagePayIPS03.xaml.cs">
+      <DependentUpon>pagePayIPS03.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pagePayIPS04.xaml.cs">
+      <DependentUpon>pagePayIPS04.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pagePhoneRecharge01.xaml.cs">
+      <DependentUpon>pagePhoneRecharge01.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pagePhoneRecharge02.xaml.cs">
+      <DependentUpon>pagePhoneRecharge02.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pagePhoneRecharge03.xaml.cs">
+      <DependentUpon>pagePhoneRecharge03.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pagePhoneRecharge04.xaml.cs">
+      <DependentUpon>pagePhoneRecharge04.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pagePhoneRecharge05.xaml.cs">
+      <DependentUpon>pagePhoneRecharge05.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pagePhoneRecharge06.xaml.cs">
+      <DependentUpon>pagePhoneRecharge06.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageShareMachine01.xaml.cs">
+      <DependentUpon>pageShareMachine01.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageShareMachine02.xaml.cs">
+      <DependentUpon>pageShareMachine02.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageShareMachine03.xaml.cs">
+      <DependentUpon>pageShareMachine03.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\pageShareMachine04.xaml.cs">
+      <DependentUpon>pageShareMachine04.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Costura\bespokefusion\dll.compressed" />
+    <EmbeddedResource Include="Costura\cappta\gp\api\com\dll.compressed" />
+    <EmbeddedResource Include="Costura\commonservicelocator\dll.compressed" />
+    <EmbeddedResource Include="Costura\galasoft\mvvmlight\dll.compressed" />
+    <EmbeddedResource Include="Costura\galasoft\mvvmlight\extras\dll.compressed" />
+    <EmbeddedResource Include="Costura\galasoft\mvvmlight\extras\pdb.compressed" />
+    <EmbeddedResource Include="Costura\galasoft\mvvmlight\pdb.compressed" />
+    <EmbeddedResource Include="Costura\galasoft\mvvmlight\platform\dll.compressed" />
+    <EmbeddedResource Include="Costura\galasoft\mvvmlight\platform\pdb.compressed" />
+    <EmbeddedResource Include="Costura\mahapps\metro\dll.compressed" />
+    <EmbeddedResource Include="Costura\mahapps\metro\pdb.compressed" />
+    <EmbeddedResource Include="Costura\materialdesigncolors\dll.compressed" />
+    <EmbeddedResource Include="Costura\materialdesigncolors\pdb.compressed" />
+    <EmbeddedResource Include="Costura\materialdesignthemes\wpf\dll.compressed" />
+    <EmbeddedResource Include="Costura\materialdesignthemes\wpf\pdb.compressed" />
+    <EmbeddedResource Include="Costura\newtonsoft\json\dll.compressed" />
+    <EmbeddedResource Include="Costura\nlog\dll.compressed" />
+    <EmbeddedResource Include="Costura\system\windows\interactivity\dll.compressed" />
+    <EmbeddedResource Include="Properties\Resources.resources" />
+    <EmbeddedResource Include="rcMessages.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Control\ucDMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\ucGiftCard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\ucInputMsgBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\ucPriceButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\ucProcessBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\ucSimButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Control\ucTileButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Popup\KMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NumPad.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageBilling01.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageBilling02.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageBilling03.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageBilling04.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageBilling05.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageBoleto01.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageBoleto02.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageBuyGiftCard01.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageBuyGiftCard02.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageBuyGiftCard03.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageBuyGiftCard04.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pagecartao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pagePayIPS00.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pagePayIPS01.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pagePayIPS02.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pagePayIPS03.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pagePayIPS04.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pagePhoneRecharge01.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pagePhoneRecharge02.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pagePhoneRecharge03.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pagePhoneRecharge04.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pagePhoneRecharge05.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pagePhoneRecharge06.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageShareMachine01.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageShareMachine02.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageShareMachine03.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\pageShareMachine04.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\back_pinpad.png" />
+    <Resource Include="images\ico_bag.png" />
+    <Resource Include="images\ico_barcode.png" />
+    <Resource Include="images\ico_card_blue.png" />
+    <Resource Include="images\ico_card_green.png" />
+    <Resource Include="images\ico_card_red.png" />
+    <Resource Include="images\ico_credit.png" />
+    <Resource Include="images\ico_gift.png" />
+    <Resource Include="images\ico_gift_netflix.png" />
+    <Resource Include="images\ico_gift_spotify.png" />
+    <Resource Include="images\ico_gift_steam.png" />
+    <Resource Include="images\ico_gift_uber.png" />
+    <Resource Include="images\ico_gift_xbox.png" />
+    <Resource Include="images\ico_ips_telecom.png" />
+    <Resource Include="images\ico_purchase.png" />
+    <Resource Include="images\ico_qrcode.png" />
+    <Resource Include="images\ico_sim_blank.png" />
+    <Resource Include="images\ico_sim_claro.png" />
+    <Resource Include="images\ico_sim_oi.png" />
+    <Resource Include="images\ico_sim_tim.png" />
+    <Resource Include="images\ico_sim_vivo.png" />
+    <Resource Include="images\ico_wallet.png" />
+    <Resource Include="images\main_back01.png" />
+    <Resource Include="images\main_back02.png" />
+    <Resource Include="images\page_billing_subject.png" />
+    <Resource Include="images\page_buy_giftcard01.png" />
+    <Resource Include="images\page_buy_giftcard2.png" />
+    <Resource Include="images\page_pay_ips.png" />
+    <Resource Include="images\page_phone_recharge.png" />
+    <Resource Include="images\page_share_machine.jpg" />
+    <Resource Include="images\tile_gift_card.png" />
+    <Resource Include="images\tile_pagar_contas.png" />
+    <Resource Include="images\tile_pagar_provedor.png" />
+    <Resource Include="images\tile_recarga_celular.png" />
+    <Resource Include="pinpad.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\ico_gg_credits_free_fire.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
