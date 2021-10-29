@@ -132,11 +132,13 @@ namespace MicroPOS.View
             if (numValue == "Backspace")
             {
                 InputSimulator sim = new InputSimulator();
-                sim.Keyboard.KeyPress(WindowsInput.Native.VirtualKeyCode.BACK);
+                sim.Keyboard.Sleep(2).KeyPress(WindowsInput.Native.VirtualKeyCode.BACK).Sleep(2);
             }
             else
             {
-                TextCompositionManager.StartComposition(new TextComposition(InputManager.Current, _txtCPF, numValue));
+                InputSimulator sim = new InputSimulator();
+                sim.Keyboard.Sleep(2).TextEntry(numValue).Sleep(2);
+                // TextCompositionManager.StartComposition(new TextComposition(InputManager.Current, _txtCPF, numValue));
             }
             _txtCPF.Focus();
         }
