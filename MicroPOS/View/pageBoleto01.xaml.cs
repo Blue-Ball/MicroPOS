@@ -143,7 +143,7 @@ namespace MicroPOS.View
 					var objBoleto = await MainWindow.RestProvider.GetBoleto(barCode);
 					if (objBoleto == null)
 					{
-						Dispatcher.BeginInvoke(new Action(delegate
+                        await Dispatcher.BeginInvoke(new Action(delegate
 						{
 							TaskManagerForm.InvokeControlAction<UIElement>(this, async (UIElement arg1) => {
 								object obj = await DialogHost.Show(new ucDMessageBox()
@@ -164,7 +164,7 @@ namespace MicroPOS.View
 							
 							string msg = MicroPOS.Helper.subs.getBetween(objBoleto.failedMsg, "message\":\"", "\"");
 
-							Dispatcher.BeginInvoke(new Action(delegate
+                            await Dispatcher.BeginInvoke(new Action(delegate
 								{    
 									TaskManagerForm.InvokeControlAction<UIElement>(this, async (UIElement arg1) => {
 										object obj = await DialogHost.Show(new ucDMessageBox()
@@ -188,7 +188,7 @@ namespace MicroPOS.View
 						dialogOpenedEventHandler1 = retObj;
 						u003cu003e9_1 = dialogOpenedEventHandler;
 					}
-					DialogHost.Show(_ucProcessBox, "RootDialog", u003cu003e9_1);
+                    await DialogHost.Show(_ucProcessBox, "RootDialog", u003cu003e9_1);
 				});
 
 
